@@ -10,9 +10,6 @@ This sample shows how I approach a Professional Services finance question using 
 - sensitivity
 - reasoning chain
 
-## Deliverable
-
-
 ## Scope
 This is an external, public-information-based sample. It is not a claim about GitLab's internal data or decision-making. The purpose is to demonstrate analytical structure, finance judgment, and communication quality.
 
