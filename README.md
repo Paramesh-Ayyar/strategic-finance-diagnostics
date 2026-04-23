@@ -10,7 +10,7 @@ Approach used:
 - reasoning chain
 
 Files:
-- [View the brief](ADD_GITHUB_PAGES_LINK)
+- [View the brief](https://paramesh-ayyar.github.io/strategic-finance-diagnostics/gitlab-ps-diagnostic/)
 - [Open the calculation pack](https://docs.google.com/spreadsheets/d/1uqNfFF4jMWXcf8i0s-qbYMFGAFYp7Dtf/edit?usp=sharing)
 
 Paramesh Ayyar  
