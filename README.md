@@ -1,15 +1,17 @@
-# Diagnostic Intelligence Framework
+# Strategic Finance Diagnostics
 
-A finance diagnostic framework for identifying structural performance issues that standard reporting does not surface clearly.
+This read focuses on the public signals, the main pressure point, and the limits of what can be concluded from disclosure alone.
 
-This work focuses on:
-- Professional Services and GTM finance diagnostics
-- evidence vs assumptions separation
-- workings, sensitivity, and reasoning-chain based analysis
-- decision-ready financial storytelling
+Approach used:
+- confirmed evidence
+- explicit assumptions
+- workings
+- sensitivity
+- reasoning chain
 
-## Current sample
-- [GitLab Professional Services Diagnostic](./gitlab-ps-diagnostic/)
+Files:
+- [View the brief](ADD_GITHUB_PAGES_LINK)
+- [Open the calculation pack](https://docs.google.com/spreadsheets/d/1uqNfFF4jMWXcf8i0s-qbYMFGAFYp7Dtf/edit?usp=sharing)
 
-## Status
-Framework in progress. Current repository contains a live sample diagnostic and evolving methodology.
+Paramesh Ayyar  
+paramesh.ayyar@outlook.com
