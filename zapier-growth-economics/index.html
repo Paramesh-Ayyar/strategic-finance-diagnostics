@@ -59,7 +59,7 @@
     .bridge,
     .bodycopy,
     .footer p,
-    .read-box p {
+    .flow-box p {
       max-width: none;
       font-size: 1rem;
       text-align: justify;
@@ -165,7 +165,7 @@
       font-weight: 600;
     }
 
-    .read-box {
+    .flow-box {
       margin-top: 16px;
       padding: 16px 18px;
       background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
@@ -173,13 +173,29 @@
       border-radius: var(--radius-sm);
     }
 
-    .read-box h3 {
-      margin: 0 0 10px;
+    .flow-box h3 {
+      margin: 0 0 12px;
       font-size: 0.98rem;
       letter-spacing: -0.01em;
     }
 
-    .read-box p {
+    .flow-row + .flow-row {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid #e6eefb;
+    }
+
+    .flow-label {
+      display: block;
+      margin: 0 0 4px;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .flow-box p {
       margin: 0;
       color: var(--text);
       font-weight: 600;
@@ -210,7 +226,7 @@
     <main class="page">
       <header class="hero">
         <h1>Zapier Growth Economics Read</h1>
-        <p class="hero-copy">This read focuses on the public signals, the main pressure point, and the limits of what can be concluded from disclosure alone.</p>
+        <p class="hero-copy">Zapier’s public surface no longer reads like a simple self-serve subscription model. Pricing and help documentation show a business that now spans multiple usage units and billing mechanics across the core platform, MCP, Agents, Chatbots, and account-level governance features. The harder public-finance question is not just how fast self-serve and new-products revenue can grow, but whether that growth can be read cleanly when those products do not all map to one visible meter.</p>
 
         <div class="card hero-card">
           <table class="intro-table">
@@ -231,7 +247,7 @@
           </table>
         </div>
 
-        <p class="section-note">* Not attempted here: this read does not infer segment margin, product-level gross margin, or internal cohort behavior that Zapier does not disclose publicly.</p>
+        <p class="section-note">Not attempted here: this read does not infer product-level gross margin, attach rates, cohort behavior, or internal metric architecture where those are not publicly disclosed.</p>
       </header>
 
       <section class="sheet">
@@ -240,13 +256,13 @@
           <h2 class="sheet-title">Self-serve growth is no longer a one-meter model</h2>
         </div>
 
-        <p class="section-copy">Zapier's public pricing now combines task-based platform plans with separate AI usage units, including MCP task conversion, agent activities, and <span class="nowrap">chatbot quotas</span>. From the outside, that is a more complex revenue architecture than a plain workflow subscription.</p>
+        <p class="section-copy">Zapier's public pricing now combines task-based platform plans with separate AI usage units, including MCP task conversion, agent activities, and <span class="nowrap">chatbot quotas</span>. That is not just a product-surface observation. It means the same customer journey can now sit across more than one operational meter before it shows up in one top-line story.</p>
 
         <div class="card section-card">
           <table class="three-col">
             <colgroup><col /><col /><col /></colgroup>
             <thead>
-              <tr><th>Metric</th><th>Public signal</th><th>What it shows</th></tr>
+              <tr><th>Metric</th><th>Public signal</th><th>Observed fact</th></tr>
             </thead>
             <tbody>
               <tr>
@@ -278,9 +294,20 @@
           </table>
         </div>
 
-        <div class="read-box">
+        <div class="flow-box">
           <h3>Read</h3>
-          <p>The harder question is whether usage across those units is additive, substitutive, or transitional as customers move across the platform. That distinction matters because the same top-line movement can mean very different things underneath: genuine expansion, migration from one surface to another, or pricing and packaging normalization across adjacent products.</p>
+          <div class="flow-row">
+            <span class="flow-label">Observed fact</span>
+            <p>Zapier publicly packages different product surfaces through different usage rules rather than one single unit.</p>
+          </div>
+          <div class="flow-row">
+            <span class="flow-label">Inferred relationship</span>
+            <p>That makes the same headline growth outcome harder to interpret because customer activity can represent true expansion, migration across adjacent surfaces, or packaging normalization across meters.</p>
+          </div>
+          <div class="flow-row">
+            <span class="flow-label">Business implication</span>
+            <p>The finance problem is not just pricing visibility. It is canonical revenue architecture: finance needs a clean translation layer from tasks, MCP calls, agent activities, and chatbot limits into one forecastable economic read.</p>
+          </div>
         </div>
       </section>
 
@@ -298,7 +325,7 @@
           <table class="three-col">
             <colgroup><col /><col /><col /></colgroup>
             <thead>
-              <tr><th>Mechanic</th><th>Public signal</th><th>What it shows</th></tr>
+              <tr><th>Mechanic</th><th>Public signal</th><th>Observed fact</th></tr>
             </thead>
             <tbody>
               <tr>
@@ -320,12 +347,23 @@
           </table>
         </div>
 
-        <div class="read-box">
+        <div class="flow-box">
           <h3>Read</h3>
-          <p>The harder question is not just how Zapier monetizes usage, but how overage behavior, pooled consumption, and execution quality change the economic read underneath the same top-line growth story.</p>
+          <div class="flow-row">
+            <span class="flow-label">Observed fact</span>
+            <p>Zapier publicly discloses overage design, shared pools, member-level visibility, and account-level usage reporting.</p>
+          </div>
+          <div class="flow-row">
+            <span class="flow-label">Inferred relationship</span>
+            <p>That suggests billing is serving two jobs at once: charging for usage and governing how usage is monitored and managed across accounts.</p>
+          </div>
+          <div class="flow-row">
+            <span class="flow-label">Business implication</span>
+            <p>Finance cannot read growth as a simple plan-tier outcome alone. Overage behavior, pooled-account consumption, and execution quality now affect how revenue is forecast, how usage is interpreted, and where risk or upside may actually sit.</p>
+          </div>
         </div>
 
-        <p class="bodycopy">The point is not just that usage is billed. The stronger read is that usage visibility, overage behavior, and pooled-account consumption are now explicit enough to shape how the business is interpreted from the outside. That does not prove margin pressure on its own. It does show that billing design and measurement quality now sit much closer to the operating economics than a plain plan-price view would suggest.</p>
+        <p class="bodycopy">This still stops short of a direct margin claim. The public record does not disclose product-level gross margin or internal cost allocation. But it does show that billing design and measurement quality now sit much closer to the operating economics than a plain plan-price view would suggest.</p>
       </section>
 
       <footer class="footer">
