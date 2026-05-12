@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Value Control Tower | Paramesh Ayyar</title>
+  <style>
+    :root {
+      --ink: #111827;
+      --muted: #4b5563;
+      --line: #d9dee7;
+      --soft: #f6f8fb;
+      --card: #ffffff;
+      --accent: #1f4e79;
+      --accent-dark: #173a5b;
+      --accent-soft: #e8f1fa;
+      --warn: #7a3415;
+      --warn-soft: #fff4e6;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: #ffffff;
+      line-height: 1.48;
+    }
+
+    .page {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 44px 36px 52px;
+    }
+
+    .hero {
+      border-bottom: 3px solid var(--accent);
+      padding-bottom: 22px;
+      margin-bottom: 28px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 40px;
+      line-height: 1.08;
+      margin: 0 0 8px;
+      letter-spacing: -0.03em;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: var(--muted);
+      margin: 0 0 22px;
+    }
+
+    .core-question {
+      background: var(--accent-soft);
+      border-left: 5px solid var(--accent);
+      padding: 16px 18px;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.42;
+      margin-top: 18px;
+    }
+
+    .section {
+      margin: 30px 0;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin: 0 0 12px;
+      letter-spacing: -0.015em;
+    }
+
+    p {
+      margin: 0 0 12px;
+      font-size: 15.5px;
+    }
+
+    .lead {
+      font-size: 16px;
+      color: #1f2937;
+      font-weight: 700;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      background: var(--card);
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      color: var(--accent);
+    }
+
+    .card p, .card li {
+      font-size: 14px;
+      color: #374151;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      font-size: 14px;
+    }
+
+    th {
+      text-align: left;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      padding: 11px;
+      font-size: 13px;
+      color: #1f2937;
+    }
+
+    td {
+      border: 1px solid var(--line);
+      padding: 11px;
+      vertical-align: top;
+      color: #374151;
+    }
+
+    .flow-wrap {
+      background: linear-gradient(180deg, #ffffff 0%, var(--accent-soft) 100%);
+      border: 1px solid #bfd3e8;
+      border-radius: 18px;
+      padding: 18px 18px 20px;
+      margin: 16px 0 18px;
+    }
+
+    .flow-label {
+      color: var(--accent-dark);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .proof-chain {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      gap: 10px;
+      align-items: center;
+      font-weight: 700;
+    }
+
+    .pill {
+      background: #ffffff;
+      border: 2px solid var(--accent);
+      border-radius: 999px;
+      padding: 11px 15px;
+      color: var(--accent-dark);
+      font-size: 15.5px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(31, 78, 121, 0.08);
+    }
+
+    .arrow {
+      color: var(--accent);
+      font-weight: 900;
+      font-size: 22px;
+    }
+
+    .note {
+      background: var(--warn-soft);
+      border-left: 5px solid var(--warn);
+      padding: 14px 16px;
+      color: #3f2c1f;
+      font-size: 14px;
+    }
+
+    .background {
+      background: var(--soft);
+      border-radius: 16px;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+    }
+
+    .bridge-callout {
+      background: var(--accent-soft);
+      border-left: 5px solid var(--accent);
+      padding: 14px 16px;
+      margin: 14px 0;
+      color: var(--accent-dark);
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .footer {
+      margin-top: 34px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .name {
+      font-weight: 700;
+      color: var(--ink);
+      font-size: 14px;
+    }
+
+    @media (max-width: 850px) {
+      .page { padding: 30px 20px; }
+      h1 { font-size: 32px; }
+      .grid-4 { grid-template-columns: 1fr; }
+      .proof-chain { grid-template-columns: 1fr; }
+      .arrow { text-align: center; transform: rotate(90deg); }
+      .footer { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="eyebrow">Public-context operating brief</div>
+      <h1>AI Value Control Tower</h1>
+      <p class="subtitle">Measuring post-purchase automation beyond adoption</p>
+      <div class="core-question">
+        Which AI-enabled workflows are creating operating value — and how do we prove it clearly enough for Product, GTM, Finance, CX, the CEO, and the Board to act on it?
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Why adoption is not enough</h2>
+      <p class="lead">AI adoption proves usage. It does not prove transformation.</p>
+      <p>For Narvar, the more important question is whether AI-enabled workflows improve post-purchase outcomes: delivery issue resolution, claims handling, returns, exchanges, fraud prevention, policy enforcement, support workload, customer trust, revenue retention, time-to-value, and margin protection.</p>
+      <p>Narvar’s public AI products sit in workflows where a better customer experience and a better economic outcome can be the same event: faster resolution, fewer avoidable payouts, better policy enforcement, and lower support burden.</p>
+      <p>The purpose of the measurement system is not to create a dashboard library. It is to create a decision system that helps leadership decide what to scale, fix, stop, or fund.</p>
+    </section>
+
+    <section class="section">
+      <h2>Measurement spine</h2>
+      <div class="flow-wrap">
+        <div class="flow-label">Minimum proof chain for AI transformation</div>
+        <div class="proof-chain">
+          <span class="pill">Adoption</span>
+          <span class="arrow">→</span>
+          <span class="pill">Workflow change</span>
+          <span class="arrow">→</span>
+          <span class="pill">Operating value</span>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Layer</th>
+            <th>What it proves</th>
+            <th>Example signals</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Adoption</strong></td>
+            <td>The capability is being used.</td>
+            <td>Tool usage, workflow coverage, customer activation, training completion.</td>
+          </tr>
+          <tr>
+            <td><strong>Workflow change</strong></td>
+            <td>The operating process is changing.</td>
+            <td>Fewer manual reviews, faster routing, lower escalation volume, stronger policy consistency.</td>
+          </tr>
+          <tr>
+            <td><strong>Business value</strong></td>
+            <td>The change created an outcome worth scaling.</td>
+            <td>Lower claim payouts, support deflection, retained revenue, faster resolution, margin protection, customer trust, time-to-value.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>Control tower as a decision system</h2>
+      <div class="grid-4">
+        <div class="card">
+          <h3>Scale</h3>
+          <p>Which AI use cases show enough operating value to receive more investment?</p>
+        </div>
+        <div class="card">
+          <h3>Fix</h3>
+          <p>Which use cases have adoption but weak workflow or outcome movement?</p>
+        </div>
+        <div class="card">
+          <h3>Stop</h3>
+          <p>Which pilots look active but are not changing the operating process?</p>
+        </div>
+        <div class="card">
+          <h3>Fund</h3>
+          <p>Which outcomes are strong enough to support customer value, renewal, expansion, pricing, or Board narrative?</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>How I would start</h2>
+      <div class="grid-4">
+        <div class="card">
+          <h3>1. Map use cases</h3>
+          <p>Create one view of active and planned AI initiatives by workflow, user, baseline, expected change, measurable outcome, data owner, and decision owner.</p>
+        </div>
+        <div class="card">
+          <h3>2. Define proof chain</h3>
+          <p>For each initiative, link adoption to workflow change and business value before calling it transformation.</p>
+        </div>
+        <div class="card">
+          <h3>3. Build for decisions</h3>
+          <p>Keep the control tower focused on initiative prioritization, customer value proof, product packaging, cost-to-serve, margin protection, and time-to-value.</p>
+        </div>
+        <div class="card">
+          <h3>4. Turn into narrative</h3>
+          <p>Translate operating evidence into a clear answer on where AI is changing Narvar’s operating model, customer value, and business performance.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Internal questions to test first</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Question</th>
+            <th>Why it matters</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Which AI use cases are tied to measurable customer or operating outcomes?</td>
+            <td>Prioritizes beyond visibility, enthusiasm, or adoption volume.</td>
+          </tr>
+          <tr>
+            <td>Where does Narvar already have outcome data by product, customer, cohort, or workflow?</td>
+            <td>Determines whether the source of truth can be built from existing data or requires new instrumentation.</td>
+          </tr>
+          <tr>
+            <td>Where do adoption metrics diverge from business impact?</td>
+            <td>Separates activity from value creation.</td>
+          </tr>
+          <tr>
+            <td>Which outcomes reduce cost, protect revenue, improve retention, or shorten time-to-value?</td>
+            <td>Connects AI transformation to business health.</td>
+          </tr>
+          <tr>
+            <td>How do Product, GTM, Finance, and CX each define success today?</td>
+            <td>Aligns functions around one version of AI impact.</td>
+          </tr>
+          <tr>
+            <td>Which metrics are executive-grade versus operator-grade?</td>
+            <td>Keeps the Board narrative clear without losing operating detail.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section background">
+      <h2>Relevant operating finance background</h2>
+      <p>My closest bridge to this work is field-service operating finance, where software adoption, workflow discipline, billing logic, and operating performance have to be understood together.</p>
+      <div class="bridge-callout">In a software-enabled operating model, workflow adoption, billing logic, service behavior, and financial outcomes do not automatically line up. The finance work is to understand where they connect, where they diverge, and what leadership should do about it.</div>
+      <p>At SMS, in a ServiceTitan-enabled field-service environment, I built the finance layer leadership used to manage pricing, capacity, technician and service activity, billing discipline, account-level performance, margin recovery, cash, and operating decisions. The important work was not only reporting financial results. It was understanding how the operating system, customer workflows, billing meter, service delivery behavior, and financial outcomes connected.</p>
+      <p>The business models are different, but the measurement discipline carries over: define the driver, understand the workflow behind the metric, separate activity from value, and create a cadence leadership can use to decide what to scale, fix, stop, or fund.</p>
+    </section>
+
+    <section class="section note">
+      This brief is based on Narvar’s public role description and public product materials. It does not assume access to Narvar’s internal pricing, customer economics, product-level revenue, implementation data, win/loss data, or Board materials. It shows how I would structure the measurement problem before internal data access.
+    </section>
+
+    <footer class="footer">
+      <div>
+        <div class="name">Paramesh Ayyar, CA</div>
+        <div>Toronto, Canada</div>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
