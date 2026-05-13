@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GTM Finance Workflow</title>
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --ink: #1f2933;
+      --muted: #5f6b7a;
+      --line: #d9dee7;
+      --card: #ffffff;
+      --soft: #eef2f7;
+      --accent: #1f4e79;
+      --accent-soft: #e6eef6;
+      --warning: #7a4b00;
+      --warning-soft: #fff3d6;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.42;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 36px 24px 54px;
+    }
+
+    .hero, .board, .appendix-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      overflow: hidden;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      margin-top: 12px;
+    }
+
+    .appendix-table th,
+    .appendix-table td {
+      text-align: left;
+      vertical-align: top;
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      font-size: 13.8px;
+    }
+
+    .appendix-table th {
+      background: var(--soft);
+      color: var(--accent);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    .appendix-table tr:last-child td { border-bottom: none; }
+    .appendix-table td:first-child { font-weight: 700; color: var(--ink); }
+
+    .proof {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: 0 12px 28px rgba(31, 41, 51, 0.055);
+    }
+
+    .hero { padding: 32px 36px; }
+
+    .eyebrow {
+      font-size: 13px;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.02;
+      margin: 0 0 12px;
+      letter-spacing: -0.035em;
+    }
+
+    .subtitle {
+      font-size: 19px;
+      font-weight: 700;
+      margin: 0 0 18px;
+    }
+
+    .hero p {
+      max-width: 860px;
+      font-size: 16.5px;
+      margin: 0 0 12px;
+    }
+
+    .thesis {
+      margin-top: 18px;
+      padding: 15px 17px;
+      background: var(--accent-soft);
+      border-left: 5px solid var(--accent);
+      border-radius: 15px;
+      font-size: 15.5px;
+    }
+
+    section { margin-top: 24px; }
+
+    h2 {
+      font-size: 27px;
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+      margin: 0 0 8px;
+    }
+
+    .section-note {
+      margin: 0 0 14px;
+      max-width: 820px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .board { padding: 18px 20px; }
+
+    .board-header,
+    .lane {
+      display: grid;
+      grid-template-columns: 180px 1.25fr 1fr 1fr;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .board-header {
+      padding: 0 0 10px;
+      color: var(--accent);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 800;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .lane {
+      padding: 15px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .lane:last-child { border-bottom: 0; padding-bottom: 4px; }
+
+    .lane-title {
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      gap: 10px;
+      align-items: start;
+    }
+
+    .number {
+      display: inline-flex;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    h3 {
+      margin: 0 0 4px;
+      font-size: 17px;
+      letter-spacing: -0.015em;
+    }
+
+    .question {
+      margin: 0;
+      font-size: 13.2px;
+      color: var(--muted);
+    }
+
+    .flowline {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      color: var(--ink);
+      font-size: 13.5px;
+      font-weight: 700;
+    }
+
+    .step {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 7px 9px;
+      white-space: nowrap;
+    }
+
+    .step.key {
+      background: var(--accent-soft);
+      border-color: #b9cce1;
+      color: var(--accent);
+    }
+
+    .arrow { color: var(--accent); font-weight: 800; }
+
+    .check, .read {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      padding: 10px 11px;
+      color: var(--muted);
+      font-size: 13.3px;
+    }
+
+    .check strong, .read strong { color: var(--accent); }
+
+    .appendix {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: 0 12px 28px rgba(31, 41, 51, 0.055);
+      padding: 20px 22px;
+    }
+
+    .output-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .output-card {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      padding: 15px;
+    }
+
+    .output-card h3 {
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .output-card ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .output-card li {
+      color: var(--muted);
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    .appendix-note {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 14.5px;
+    }
+
+    .proof {
+      padding: 20px 22px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .proof p {
+      color: var(--muted);
+      margin: 0 0 11px;
+      font-size: 15px;
+    }
+
+    .proof p:last-child { margin-bottom: 0; }
+
+    .guardrail {
+      background: var(--warning-soft);
+      border: 1px solid #f1d99e;
+      border-left: 5px solid var(--warning);
+      border-radius: 15px;
+      padding: 14px 16px;
+      margin-top: 14px;
+      color: #4a3600;
+      font-size: 14.5px;
+    }
+
+    @media (max-width: 980px) {
+      .board-header { display: none; }
+      .lane {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .proof, .output-grid { grid-template-columns: 1fr; }
+      .hero { padding: 28px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div class="eyebrow">Operating finance brief</div>
+      <h1>GTM Finance Workflow</h1>
+      <p class="subtitle">From commercial activity to unit economics and recurring decisions.</p>
+      <p>GTM finance work has to connect what the commercial team is doing with when revenue starts, how margin changes, and what the forecast should assume.</p>
+      <p>Pipeline, signed deals, partner activity, and campaign volume are not economic value by themselves. They become useful finance signals only when they convert into revenue, activate at a measurable pace, ramp, repeat, and contribute margin after GTM cost and cost-to-serve.</p>
+      <div class="thesis"><strong>The goal is not more reporting.</strong> The goal is to know what changed, whether the change is real, and whether it should change the forecast or the GTM decision.</div>
+    </header>
+
+    <section>
+      <h2>Three checks I would run</h2>
+      <p class="section-note">For each area, I would show the operating flow, the data check, and the decision signal.</p>
+
+      <div class="board">
+        <div class="board-header">
+          <div>Lane</div>
+          <div>Operating flow</div>
+          <div>Validation check</div>
+          <div>Decision signal</div>
+        </div>
+
+        <div class="lane">
+          <div class="lane-title">
+            <span class="number">1</span>
+            <div>
+              <h3>Commercial flow</h3>
+              <p class="question">Is activity moving toward revenue quickly enough?</p>
+            </div>
+          </div>
+          <div class="flowline">
+            <span class="step">Pipeline</span><span class="arrow">→</span>
+            <span class="step">Qualified</span><span class="arrow">→</span>
+            <span class="step">Signed</span><span class="arrow">→</span>
+            <span class="step key">First revenue</span><span class="arrow">→</span>
+            <span class="step">90-day ramp</span>
+          </div>
+          <div class="check"><strong>Check:</strong> match signed date, first revenue date, and 30/60/90-day ramp using consistent account / partner / campaign IDs.</div>
+          <div class="read"><strong>Decision signal:</strong> signed activity should not be treated as near-term revenue until activation timing and early ramp are visible.</div>
+        </div>
+
+        <div class="lane">
+          <div class="lane-title">
+            <span class="number">2</span>
+            <div>
+              <h3>Economic conversion</h3>
+              <p class="question">Does activated revenue produce margin and payback?</p>
+            </div>
+          </div>
+          <div class="flowline">
+            <span class="step">Activated revenue</span><span class="arrow">→</span>
+            <span class="step">Direct cost</span><span class="arrow">→</span>
+            <span class="step">Support load</span><span class="arrow">→</span>
+            <span class="step key">Margin</span><span class="arrow">→</span>
+            <span class="step">Payback</span>
+          </div>
+          <div class="check"><strong>Check:</strong> reconcile activated revenue to direct cost, support load, GTM cost allocation, contribution margin, and payback.</div>
+          <div class="read"><strong>Decision signal:</strong> revenue is useful only if margin and payback support more GTM spend.</div>
+        </div>
+
+        <div class="lane">
+          <div class="lane-title">
+            <span class="number">3</span>
+            <div>
+              <h3>Revenue quality</h3>
+              <p class="question">Is revenue repeatable, stable, and forecastable?</p>
+            </div>
+          </div>
+          <div class="flowline">
+            <span class="step">First revenue cohort</span><span class="arrow">→</span>
+            <span class="step">Repeat activity</span><span class="arrow">→</span>
+            <span class="step">Expansion / drop-off</span><span class="arrow">→</span>
+            <span class="step key">Margin trend</span><span class="arrow">→</span>
+            <span class="step">Forecast variance</span>
+          </div>
+          <div class="check"><strong>Check:</strong> track cohorts after first revenue for repeat behavior, expansion/drop-off, margin trend, and actual-versus-forecast variance.</div>
+          <div class="read"><strong>Decision signal:</strong> first revenue has to repeat, hold margin, and explain forecast misses.</div>
+        </div>
+      </div>
+
+      <div class="guardrail">I would define the finance checks that a SQL or BigQuery workflow needs to support. I would not call this production data architecture unless I owned that build directly.</div>
+    </section>
+
+    <section class="appendix">
+      <h2>Appendix: sample validation outputs</h2>
+      <table class="appendix-table">
+        <thead>
+          <tr>
+            <th>Check</th>
+            <th>Expected output</th>
+            <th>What it tests</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Activation timing</td>
+            <td>Signed count; % activated; median days to first revenue; 30/60/90-day ramp.</td>
+            <td>Whether signed activity is turning into revenue fast enough for the forecast.</td>
+          </tr>
+          <tr>
+            <td>Margin / payback</td>
+            <td>Activated revenue; direct cost %; support cost %; contribution margin %; estimated payback.</td>
+            <td>Whether revenue clears cost-to-serve and supports more GTM spend.</td>
+          </tr>
+          <tr>
+            <td>Durability / variance</td>
+            <td>M1/M3/M6 revenue; repeat or expansion %; margin trend; actual vs forecast variance.</td>
+            <td>Whether first revenue repeats, holds margin, and explains forecast movement.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="proof">
+      <div>
+        <h2>Relevant operating-finance proof</h2>
+        <p>This is close to work I have done directly at SMS. The work was not just reporting results. It meant connecting pricing, utilization, account profitability, billing discipline, margin, cash, and headcount timing to the decisions the CEO and COO needed to make.</p>
+        <p>The business model here is different, so I would not claim one-to-one experience. The transferable part is the work: learn how the business creates revenue, identify where activity turns into economic value, test whether that revenue produces margin, and give leaders a review they can actually use.</p>
+      </div>
+      <div>
+        <h2>Recent project work</h2>
+        <p>Recent case and application work across marketplace and SaaS-style finance contexts has forced the same checks.</p>
+        <p>The recurring work has been driver-level forecasting, source-data validation, metric definitions, revenue quality, usage economics, and AI-assisted checks.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
